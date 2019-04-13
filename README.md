@@ -2,9 +2,7 @@
 
 This website is an fake shop that is showing their blog posts for different products. Users can by buy products. Snipcart is implemented for checkout product purchasing. Netlify Identity is used for the autheniticating private routes. Deployment is on netlify.
 
-## Run this dockerized Ecommerce Store
-
-Make sure docker and gatsby cli are installed on a computer
+## Run this mircshop shop
 
 clone project repository by command
 
