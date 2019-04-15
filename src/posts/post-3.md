@@ -4,8 +4,9 @@ year: "2019"
 date: "12-01-2019"
 ---
 
-# Welcome
+# Casual bag Collection
 
-Hello New traveling bags for Europeon people!!!
+Hello hicking bag is offered
+We have black in color and is best for travellers.
 
 I hope My customers will really like it...

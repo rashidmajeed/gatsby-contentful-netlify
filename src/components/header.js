@@ -25,7 +25,7 @@ const Header = ({ siteTitle }) => (
           alt="mircshop Logo"
           style={{
             borderRadius: "50%",
-            border: "3px solid orange",
+            border: "3px solid #ff8300",
             margin: "0 5px",
             width: "50px",
           }}
@@ -34,7 +34,7 @@ const Header = ({ siteTitle }) => (
           <Link
             to="/"
             style={{
-              color: `orange`,
+              color: `#ff8300`,
               textDecoration: `none`,
             }}
           >

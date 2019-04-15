@@ -1,8 +1,9 @@
 const path = require("path")
 const { createFilePath } = require("gatsby-source-filesystem")
 
-const ProgramticPost = path.resolve("./src/programatic-pages/PostTemp.js")
+const ProgramaticPost = path.resolve("./src/programatic-pages/PostTemp.js")
 const ProgramaticBlog = path.resolve("./src/programatic-pages/BlogTemp.js")
+const ProgramaticProd = path.resolve("./src/programatic-pages/ProdTemp.js")
 // API on node creation
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -24,12 +25,20 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(limit: 1000) {
         edges {
           node {
             fields {
               slug
             }
+          }
+        }
+      }
+
+      allContentfulProduct {
+        edges {
+          node {
+            slug
           }
         }
       }
@@ -40,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
   posts.forEach(({ node: post }) => {
     createPage({
       path: `posts${post.fields.slug}`,
-      component: ProgramticPost,
+      component: ProgramaticPost,
       context: {
         slug: post.fields.slug,
       },
@@ -51,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
     /* Pagination for a blog posts*/
   }
 
-  const postsPerPage = 1
+  const postsPerPage = 2
   const totalPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: totalPages }).forEach((_, index) => {
     const currentPage = index + 1
@@ -68,6 +77,16 @@ exports.createPages = async ({ graphql, actions }) => {
         isLastPage,
         currentPage,
         totalPages,
+      },
+    })
+  })
+  const products = result.data.allContentfulProduct.edges
+  products.forEach(({ node: product }) => {
+    createPage({
+      path: `/products/${product.slug}`,
+      component: ProgramaticProd,
+      context: {
+        slug: product.slug,
       },
     })
   })

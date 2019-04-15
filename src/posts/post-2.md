@@ -1,11 +1,12 @@
 ---
-title: "Man Shoe"
+title: "Italian Shoe"
 year: "2019"
 date: "12-03-2019"
 ---
 
-# Welcome
+# Italian Shoe introduced for men
 
-Hello New Shoes for Europeon Men!!!
+Hello New Shoe for Europeon Men!!!
+We have offered top quality shoe for European folk.
 
 I hope My customers will really like it...

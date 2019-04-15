@@ -15,21 +15,32 @@ export default ({ data, pageContext }) => {
         <h1
           style={{
             display: "inline-block",
-            borderBottom: "2px solid orange",
-            textAlign: "right",
+            borderBottom: "2px solid #ff8300",
           }}
         >
           mircshop Blog
         </h1>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+        <h4
+          style={{
+            display: "flex",
+            alignItems: "center",
+            maxWidth: 700,
+            marginTop: "10px",
+            marginLeft: "50px",
+          }}
+        >
+          {data.allMarkdownRemark.totalCount} Posts
+        </h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div
             key={node.id}
             style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
+              maxWidth: 825,
+              margin: "0 auto",
               border: "1px solid",
-              color: "a3a1a1",
-              marginTop: "0.2rem",
-              padding: `padding: 0.2rem`,
               backgroundColor: "#e6edf2",
               boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
               borderRadius: "5px 5px 0 0;",
@@ -38,17 +49,18 @@ export default ({ data, pageContext }) => {
             <h3>
               <span
                 style={{
+                  marginTop: "10px",
                   color: "black",
                 }}
               >
                 <Link to={`/posts${node.fields.slug}`}>
                   {node.frontmatter.title}
-                </Link>{" "}
+                </Link>
               </span>
               <div
                 style={{
                   fontSize: "0.8rem",
-                  color: "orange",
+                  color: "#ff8300",
                   marginTop: "0.3rem",
                   marginBotom: "0.5rem",
                 }}
@@ -71,7 +83,7 @@ export default ({ data, pageContext }) => {
         >
           {!isFirstPage && (
             <Link to={prevPage} rel="prev">
-              Prev Page
+              Back{<span>{"<<"}</span>}
             </Link>
           )}
           {Array.from({ length: totalPages }, (_, index) => (
@@ -81,7 +93,7 @@ export default ({ data, pageContext }) => {
           ))}
           {!isLastPage && (
             <Link to={nextPage} rel="next">
-              Next Page
+              Next{<span>{">>"}</span>}
             </Link>
           )}
         </div>
@@ -108,7 +120,7 @@ export const query = graphql`
             title
             date
           }
-          excerpt
+          excerpt(pruneLength: 22)
         }
       }
     }
