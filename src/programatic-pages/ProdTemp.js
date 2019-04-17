@@ -23,7 +23,7 @@ const ProgramaticProd = ({ data: { contentfulProduct } }) => (
       <h4>${contentfulProduct.price}</h4>
       <p>{contentfulProduct.description}</p>
       <Img
-        style={{ margin: "0 auto", maxWidth: 500 }}
+        style={{ margin: "0 auto", maxWidth: 400 }}
         fluid={contentfulProduct.image.fluid}
       />
     </div>
